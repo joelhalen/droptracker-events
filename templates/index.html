@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+{% block title %}
+Events - DropTracker.io
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">DropTracker - Events</h1>
+
+    <!-- Events and Prize Pools Section -->
+    <div class="row my-4">
+        <div class="col-md-8">
+            <h2>Event Styles</h2>
+            <p>The DropTracker event system is host to numerous different types of events.<br />
+                An italicized name denotes that the event is currently a <em>work in progress</em>.
+            </p>
+            <!-- BOSS OF THE WEEK -->
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://i.redd.it/5j8t721vhv881.png" class="card-img" alt="-">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><em>Boss(es) of the Week</em></h5>
+                            <p class="card-text" style="font-size:80%;">Compete to obtain the most <b>points</b> for the specified boss(es) on the given week!
+                            Points can be obtained by reaching milestone kill-counts, obtaining individual kills and receiving rare drops, to name a few methods.</p>
+                            <!--<p class="card-text">
+                                <img src="https://www.droptracker.io/img/itemdb/996.png" alt="Entry Fee" style="height: 24px;">
+                                <b>Entry Fee:</b>
+                                <small class="text-muted">2.5M GP (generally)</small>
+                            </p>
+                            <p class="card-text">
+                                <img src="https://www.droptracker.io/img/itemdb/1004.png" alt="Prize Pool" style="height: 24px;">
+                                <b>Prize:</b><br />
+                                <small class="text-muted"><b>1st place</b> - 80% winnings</small><br />
+                                <small class="text-muted"><b>2nd place</b> - 20% winnings</small>
+                            </p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SKILL OF THE WEEK -->
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="img.com/img" class="card-img" alt="-">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><em>Skill of the Week</em></h5>
+                            <p class="card-text" style="font-size:80%;">The 'ol classic Skill of the Week, with some added twists courtesy our custom RuneLite plugin!
+                            Compete to obtain the most experience in the selected skill, obtain the most skill-related collection log slots/random events/clues, and much more!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="img.com/img" class="card-img" alt="-">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><em>Lost Lands</em></h5>
+                            <p class="card-text" style="font-size:80%;">A uniquely-developed game custom-built for the DropTracker community, based loosely on the concepts presented in
+                            <b>CandyLand</b>, with Old School twists and a Mario-Kart style item system, where offensive and defensive items can help guide you to victory!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="img.com/img" class="card-img" alt="-">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><em>Bingo!</em></h5>
+                            <p class="card-text" style="font-size:80%;">This one doesn't need a whole lot of explanation! It's the classic Old School Runescape Bingo!
+                            Compete alone or on a team against others to be the first to BLACKOUT the event bingo board, to receive <b>100%</b> of the buy-ins/prize pool.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Recent Events</h2>
+            <p>None!</p>
+        </div>
+    </div>
+
+    <!-- News Section -->
+    <div class="row">
+        <div class="col-12">
+            <h2>News / Updates</h2>
+            <div class="list-group">
+                <a href="https://www.discord.gg/droptracker" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Community Changes</h5>
+                        <small>Feb. 11, 2024</small>
+                    </div>
+                    <p class="mb-1">We've obtained a custom Discord invite link!<br>
+                    Join the community today & help us grow!</p>
+                    <small>Read the full post in Discord... (click here)</small>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+</html>

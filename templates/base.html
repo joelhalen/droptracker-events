@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+    {% block title %}
+    DropTracker.io
+    {% endblock %}
+    </title>
+    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,100;6..12,300&family=Poppins:wght@100&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    {% block stylesheet %}
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dt_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta property="og:title" content="DropTracker Events" />
+    <meta property="og:description" content="The DropTracker is a RuneLite plugin that automates loot tracking and immersive events in Old School RuneScape." />
+    <meta property="og:url" content="https://events.droptracker.io" />
+    <!--<meta property="og:image" content="https://events.droptracker.io/img/dt-logo.png" />-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DropTracker Events">
+    <meta name="twitter:description" content="The DropTracker is a RuneLite plugin that automates loot tracking and immersive events in Old School RuneScape">
+    <meta name="twitter:image" content="https://events.droptracker.io/img/dt-logo.png">
+
+    <!-- Optional: Specify the type of content -->
+    <meta property="og:type" content="website" />
+    <!-- Optional: Set the site name -->
+    <meta property="og:site_name" content="DropTracker Events" />
+    <style>
+        /* CSS styles will be here */
+    </style>
+</head>
+<body style="background-image: url('../static/img/topbanner.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment:fixed;">
+
+<nav class="navbar navbar-expand-lg">
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="/img/dt-logo.png" alt="DropTracker Logo">
+        <span>DropTracker.io</span>
+    </div>
+    <!-- Hamburger Menu for Mobile -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <!-- Navigation Menu -->
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item"><a href="https://www.droptracker.io/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="https://events.droptracker.io/" class="nav-link active" style="font-weight:4;">Events</a></li>
+            {% if user %}
+            <li class="nav-item"><a href="https://www.droptracker.io/submit" class="nav-link">Submit</a></li>
+            {% endif %}
+            <li class="nav-item"><a href="https://discord.gg/droptracker" class="nav-link">Support</a></li>
+            {% if is_admin %}
+            <li class="nav-item"><a href="https://www.droptracker.io/admin_panel" class="nav-link">Admin Panel</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <!-- User Info & Authentication Links -->
+    <div class="user-auth">
+         {% if user %}
+        <p>Signed in as: {{ user.username }}</p>
+        <div>
+            <a href="https://www.droptracker.io/logout" class="btn btn-secondary">Sign out</a>
+            <a href="https://www.droptracker.io/profile" class="btn btn-primary">User Settings</a>
+        </div>
+    {% else %}
+        <div>
+            <a href="/login" class="btn btn-primary">Sign in</a>
+        </div>
+    {% endif %}
+    </div>
+</nav>
+<div class="main-wrapper">
+    {% block content %}
+    <!-- This block will be overridden by child templates -->
+    {% endblock %}
+</div>
+    <footer>
+        <div>© 2024 DropTracker.io - All Rights Reserved.</div>
+        <div>Designed with &#9829; and ☕ by <a href="https://github.com/joelhalen">@joelhalen</a></div>
+        <div><a href="https://github.com/joelhalen/droptracker-plugin/issues">Report a Bug</a> | <a href="https://discord.gg/kbGxktSF95">Get Support</a></div>
+
+        <br>
+    </footer>
+</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    {% if news_posts is defined %}
+        <script>
+            const newsFilenames = JSON.parse('{{ news_posts | tojson | safe }}');
+            // ... JavaScript that uses newsFilenames ...
+        </script>
+    {% else %}
+        <script>
+            const newsFilenames = {};
+        </script>
+    {% endif %}
+    <script>
+        var BASE_URL = "{{ url_for('static', filename='') }}";
+    </script>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/news.js') }}"></script>
+
+
+</html>

@@ -1,0 +1,97 @@
+/* General styles for the news post container */
+.news-post {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Styling headers */
+.news-post h1,
+.news-post h2,
+.news-post h3,
+.news-post h4,
+.news-post h5,
+.news-post h6 {
+    color: #007bff; /* Blue headers */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.news-post h1 {
+    font-size: 28px;
+}
+
+.news-post h2 {
+    font-size: 24px;
+}
+
+.news-post h3 {
+    font-size: 20px;
+}
+
+/* Styling paragraphs */
+.news-post p {
+    margin-bottom: 10px;
+}
+
+/* Styling links */
+.news-post a {
+    color: #28a745; /* Green links */
+    text-decoration: none;
+}
+
+.news-post a:hover {
+    text-decoration: underline;
+}
+
+/* Styling images */
+.news-post img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Styling lists */
+.news-post ul,
+.news-post ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.news-post li {
+    margin-bottom: 5px;
+}
+
+/* Styling blockquotes */
+.news-post blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 15px;
+    margin-left: 0;
+    color: #666;
+    font-style: italic;
+}
+
+/* Styling code */
+.news-post pre,
+.news-post code {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f8f8;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.news-post pre {
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+
+/* Styling horizontal lines */
+.news-post hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}

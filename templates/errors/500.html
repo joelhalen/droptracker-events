@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+{% block title %}
+Internal Server Error - DropTracker.io
+{% endblock %}
+<!-- Main Content Section -->
+{% block content %}
+<div class="container">
+    <div style="text-align: center;"><br>
+        <h6>Error code:</h6>
+        <h1 style="font-size:100px;">500</h1>
+    <h1>Ehhm... what just happened?</h1><br>
+        <h3>Something went wrong.</h3>
+        <p>We're really sorry about that.</p>
+        <br>
+        <br>
+        I've got the greatest tech wizards behind the scenes figuring out what happened just then. Try again later, maybe?<br>
+        {% if user and user['id'] == '528746710042804247' %}
+        dafuq u doin bruh this page not work
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+</body>
+</html>

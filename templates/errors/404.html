@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+{% block title %}
+Page not found - DropTracker.io
+{% endblock %}
+<!-- Main Content Section -->
+{% block content %}
+<div class="container">
+    <div style="text-align: center;"><br>
+        <h6>Error code:</h6>
+        <h1 style="font-size:75px;">404</h1>
+    <h1>Ehhm... where you headed?</h1><br>
+        <span><em>Looks like you followed a bad link. Sorry about that.</em></span>
+        <br>
+        <br>
+        I've got the greatest tech wizards behind the scenes figuring out what happened just then. Try again later, maybe?<br>
+        {% if user and user['id'] == '528746710042804247' %}
+        dafuq u doin bruh this page not work
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+</body>
+</html>

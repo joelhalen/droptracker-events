@@ -1,0 +1,350 @@
+@font-face {
+    font-family: 'Alagard';
+    src: url('alagard.ttf') format('truetype');
+}
+span.counter_text {
+    font-size: 40px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    text-shadow: black;
+    text-emphasis-color: aqua;
+}
+.fancy-container {
+    border: 2px solid #000000;
+    border-radius: 15px;
+    padding: 40px;
+    width: auto;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: white;
+    font-size: 15px;
+    font-family: 'Alagard', sans-serif;
+}
+@font-face {
+    font-family: 'Alagard';
+    src: url('alagard.ttf') format('truetype');
+}
+body {
+    display:block;
+}
+img#lootBoardImage {
+    width: 85%;
+    height: 85%;
+}
+.navbar {
+    background-color: #333;
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: #ddd;
+}
+
+.hero-section {
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    color: slateblue;
+    padding: 50px;
+}
+
+
+.news-panel {
+    position: fixed;
+    right: 0;
+    top: 60px;
+    width: 300px;
+    height: 100%;
+    background-color: #f8f9fa;
+    border-left: 1px solid #ddd;
+    padding: 20px;
+    overflow-y: auto;
+    opacity: 0.6;
+}
+a.nav-link active {
+    background-color: black;
+}
+
+    #loading-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+        z-index: 2; /* Ensure it's above other elements */
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader, .inner-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader {
+    border: 5px solid #ffffff; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+.inner-loader {
+    /* Style as needed, no animation required */
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+html {
+    height: 100%;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex; /* Use flex layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    background-color: rgba(245, 245, 245, 0.8);
+    width: 75%; /* Set width */
+    margin: 20px auto; /* Top & Bottom margin, Auto horizontally centers */
+    border: 2px solid black; /* Left border */
+    padding: 20px; /* Inner spacing */
+    box-sizing: border-box;
+}
+/* Add a class to the main wrapper if not present */
+.main-wrapper {
+    display: flex; /* Use flex layout */
+    flex-direction: column; /* Stack children vertically */
+    min-height: 100vh; /* Full viewport height */
+    flex: 1;
+}
+/* Footer with a potential z-index to ensure it's above other positioned elements */
+footer {
+  background-color: #007bff; /* Primary blue color */
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+  z-index: 10; /* Adjust as needed, higher than other content's z-index */
+  position: relative; /* Needed for z-index to take effect */
+}
+
+
+footer a {
+    color: #f8f9fa;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.guild_block {
+    border: 2px solid #000000;
+    border-radius: 15px;
+    padding: 20px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    font-family: 'Alagard', sans-serif;
+}
+
+.guild_icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.guild_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.guild_name {
+    margin: 0;
+    font-size: 20px;
+}
+
+.owner_info {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.modify_link {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 15px;
+}
+.settings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.settings-table th, .settings-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.settings-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.settings-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.setting_block {
+    border: 2px solid #000000;
+    border-radius: 15px;
+    padding: 20px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.setting_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.param_name {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.current_setting {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.change_button {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 15px;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+/* Media Queries for Mobile Devices */
+@media only screen and (max-width: 600px) {
+    .container, .fancy-container, .guild_block, .setting_block {
+        width: 95%; /* Full width minus some margin */
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .navbar, .news-panel, .loader, .inner-loader, footer {
+        width: 100%;
+    }
+
+    .hero-section {
+        padding: 20px;
+        background-size: auto 100%; /* Adjust background size */
+    }
+
+    span.counter_text {
+        font-size: 24px; /* Smaller font size for counters */
+    }
+
+    .guild_icon, .guild_info, .setting_container {
+        /* Adjustments for smaller screens */
+        width: auto;
+        margin: 5px;
+    }
+
+    .guild_name, .owner_info, .param_name, .current_setting, .change_button {
+        /* Smaller text for mobile */
+        font-size: 14px;
+    }
+
+    .news-panel {
+        position: relative; /* Make news-panel flow in the document */
+        height: auto;
+        padding: 15px;
+    }
+
+    #loading-overlay {
+        /* Ensure loading overlay is full-width */
+        width: 100%;
+        height: 100vh;
+    }
+    img#lootBoardImage {
+    width: 80%;
+    height: 80%;
+}
+    img#lootBoardImage:hover {
+        cursor: pointer;
+    }
+}
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.players-table th, .players-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.players-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    cursor: pointer; /* Indicates that the header is clickable for sorting */
+}
+
+.players-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.players-table a:hover {
+    text-decoration: none;
+    text-shadow: black;
+    color: crimson;
+}
+.user-avatar {
+    height: 50px;
+    border-radius: 50%;
+}
