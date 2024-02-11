@@ -1,9 +1,16 @@
 import aiomysql
+import yaml
+
+with open('cfg/config.yaml', 'r') as config_file:
+    config = yaml.safe_load(config_file)
+    database_pass = config['database_pass']
+    database_user = config['database_user']
+    database_host = config['database_host']
 
 async def get_database_connection():
     # Create a connection to your MySQL database
-    conn = await aiomysql.connect(host='localhost', port=3306,
-                                  user='dtdb', password='0X[y(Ref6YOUW)D)',
+    conn = await aiomysql.connect(host=database_host, port=3306,
+                                  user=database_user, password=database_pass,
                                   db='events')
     return conn
 
