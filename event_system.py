@@ -14,17 +14,46 @@
 import asyncio
 
 from utils.db.database import Database
-
+from core.item import Item
 
 database = Database()
 
 
-class EventManager:
-    def __init__(self, database):
+## Define all the items that are
+# used inside the Lost Lands event using the Item class
+def define_items():
+    usable_items = {}
+    items_to_add = [
+        # Re-rolls
+        {"itemid": 0, "name": "reroll", "full_name": "Re-roll",
+         "description": "Re-rolls the task that has been currently assigned.",
+         "emoji": "🔄",
+         "item_type": "misc", "movement": 0, "max_held": 1, "cooldown": 5},
+        # Dinh's bulwark
+        {"itemid": 1, "name": "dinhs", "full_name": "Dinh's Bulwark",
+         "description": "Prevents your team from being affected by movement-related items or abilities.\n"
+                        "Expires after one use.",
+         "emoji": ":game_die:", "item_type": "defensive",
+         "movement": 0},
+    ]
+    for item_data in items_to_add:
+        item = Item(**item_data)
+        usable_items[item.name] = item
+
+    return usable_items
+
+
+items = define_items()
+items.get(1)
+
+
+class LostLandsManager:
+    def __init__(self):
         self.database = database
         self.games = {}  # Key: game_id, Value: game details
         self.players = {}  # Key: player_id, Value: player details
         self.teams = {}  # Key: team_id, Value: team details
+        self.items = items
 
         asyncio.run(self.load_data_from_db())
 
