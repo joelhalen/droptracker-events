@@ -28,6 +28,7 @@ from quart import Quart, jsonify, url_for, session, redirect, render_template, r
 
 from authlib.integrations.httpx_client import AsyncOAuth2Client
 
+from utils.db.database import Database
 from utils.fs.FileSystemSessionInterface import FileSystemSessionInterface
 from utils.fs.logging import this_logger
 
@@ -38,6 +39,8 @@ with open('cfg/config.yaml', 'r') as config_file:
 intents = interactions.Intents.DEFAULT | interactions.Intents.GUILD_MESSAGE_CONTENT | interactions.Intents.GUILD_MEMBERS | interactions.Intents.ALL
 bot = interactions.Client(token=bot_token,
                           intents=intents)
+# Attach database class
+database = Database()
 
 def create_app(bot):
     # Creates the web server app while passing the
@@ -48,6 +51,8 @@ def create_app(bot):
     app.config['SESSION_COOKIE_SECURE'] = True
     app.config['SESSION_COOKIE_SAMESITE'] = 'None'
     app.config['SESSION_COOKIE_HTTPONLY'] = True
+    ## Initialize the database
+    database.init_database()
 
     app.session_interface = FileSystemSessionInterface(app.config['SESSION_FILE_DIR'])
     #Blueprints for listeners later
@@ -118,7 +123,7 @@ ssl_context.load_cert_chain('ssl/certificate.crt',
                             'ssl/private.key')
 
 config = Config()
-config.bind = ["0.0.0.0:3845"]  # The host and port to bind
+config.bind = ["0.0.0.0:3845"]
 config.ssl = ssl_context
 
 loop = asyncio.get_event_loop()

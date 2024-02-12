@@ -37,3 +37,4 @@ bs4~=0.0.1
 beautifulsoup4~=4.12.2
 hypercorn~=0.14.3
 Authlib~=1.2.1
+PyYAML~=6.0.1
