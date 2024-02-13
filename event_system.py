@@ -12,6 +12,7 @@
 ###     Please maintain the above copyright notice in redistributions or modifications.        ###
 ##################################################################################################
 import asyncio
+import datetime
 
 from utils.db.database import Database
 from core.item import Item
@@ -44,7 +45,6 @@ def define_items():
 
 
 items = define_items()
-items.get(1)
 
 
 class LostLandsManager:
@@ -76,6 +76,13 @@ class LostLandsManager:
         teams = await self.database.fetch_data("SELECT * FROM teams")
         for team in teams:
             self.teams[team['team_id']] = team
+
+    async def write_log(self, log_type, name, message):
+        timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        query = """
+           INSERT INTO logs (log_type, name, message, timestamp)
+           VALUES (%s, %s, %s, %s)"""
+        await self.database.send_query(query, (log_type, name, message, timestamp))
 
     async def create_game(self, game_id, game_params):
         game_exists = await self.database.fetch_data("SELECT game_id FROM games WHERE game_id = %s", (game_id,))
@@ -132,3 +139,38 @@ class LostLandsManager:
         )
         return f"Game {game_id} updated to state {new_state}"
 
+    async def give_item(self, individual: bool, targ_id: int, item: str, reason: str = "None provided"):
+        new_item = None
+        if item in self.items:
+            new_item = self.items[item]
+        else:
+            for item in self.items:
+                if item.name == item:
+                    new_item = self.items[item]
+                elif item.full_name == item:
+                    new_item = self.items[item]
+        if new_item is None:
+            return False, "The item you were given or tried to give was not found"
+        else:
+            if individual:
+                if self.players[targ_id]['items'].count(new_item) > new_item.max_held:
+                    await self.write_log("WARNING",
+                                         "Too many items",
+                                         f"{self.players[targ_id]['player_name']} was "
+                                         f"given {new_item.full_name} but did not have "
+                                         f"enough space in their inventory. "
+                                         f"Held/Max: "
+                                         f"{self.players[targ_id]['items'].count(new_item)}/{new_item.max_held}")
+                    return False, f"You are already holding too many items of this type! ({new_item.type})"
+                self.players[targ_id]['items'].append(new_item)
+            else:
+                if self.players[targ_id]['items'].count(new_item) > new_item.max_held:
+                    await self.write_log("WARNING",
+                                         "Too many items",
+                                         f"{self.teams[targ_id]['team_name']} was "
+                                         f"given {new_item.full_name} but did not have "
+                                         f"enough space in their inventory. "
+                                         f"Held/Max: "
+                                         f"{self.teams[targ_id]['items'].count(new_item)}/{new_item.max_held}")
+                    return False, f"Your team is already holding too many items of this type! ({new_item.type})"
+                self.teams[targ_id]['items'].append(new_item)

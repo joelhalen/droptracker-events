@@ -55,6 +55,7 @@ class Database:
         players_table = """
         CREATE TABLE IF NOT EXISTS players (
             player_id VARCHAR(255) PRIMARY KEY,
+            player_name VARCHAR(255),
             game_id VARCHAR(255),
             team_id VARCHAR(255),
             FOREIGN KEY (game_id) REFERENCES games(game_id)
@@ -65,6 +66,7 @@ class Database:
         CREATE TABLE IF NOT EXISTS teams (
             team_id VARCHAR(255) PRIMARY KEY,
             game_id VARCHAR(255),
+            team_name VARCHAR(255),
             players TEXT,
             inventory TEXT,
             currentTile INTEGER,
