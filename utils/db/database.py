@@ -47,6 +47,7 @@ class Database:
         games_table = """
         CREATE TABLE IF NOT EXISTS games (
             game_id VARCHAR(255) PRIMARY KEY,
+            server_id VARCHAR(255),
             game_params TEXT,
             state VARCHAR(50)
         );
@@ -66,6 +67,8 @@ class Database:
         CREATE TABLE IF NOT EXISTS teams (
             team_id VARCHAR(255) PRIMARY KEY,
             game_id VARCHAR(255),
+            role_id VARCHAR(255),
+            thread_id VARCHAR(255),
             team_name VARCHAR(255),
             players TEXT,
             inventory TEXT,

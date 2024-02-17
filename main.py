@@ -28,6 +28,7 @@ from quart import Quart, jsonify, url_for, session, redirect, render_template, r
 
 from authlib.integrations.httpx_client import AsyncOAuth2Client
 
+from event_system import LostLandsManager
 from utils.db.database import Database
 from utils.fs.FileSystemSessionInterface import FileSystemSessionInterface
 from utils.fs.logging import this_logger
@@ -42,6 +43,10 @@ bot = interactions.Client(token=bot_token,
 # Attach database class
 database = Database()
 
+# Attach Lost Lands
+lost_lands = LostLandsManager(bot)
+
+
 def create_app(bot):
     # Creates the web server app while passing the
     # bot instance to the routes
@@ -52,7 +57,6 @@ def create_app(bot):
     app.config['SESSION_COOKIE_SAMESITE'] = 'None'
     app.config['SESSION_COOKIE_HTTPONLY'] = True
     ## Initialize the database
-    database.init_database()
 
     app.session_interface = FileSystemSessionInterface(app.config['SESSION_FILE_DIR'])
     #Blueprints for listeners later
@@ -89,6 +93,7 @@ async def on_ready():
             ]
         )
     )
+    await lost_lands.async_init()
 
 ## QUART APP ENDPOINTS
 
